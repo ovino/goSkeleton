@@ -26,8 +26,8 @@
 <body>
 	<div class="valign-wrapper">
 		<div class="card" style="width: 25%; margin-left: auto; margin-right: auto; margin-top: 10%;">
-			<div class="card-image waves-effect waves-block waves-light">
-				<img class="activator" src="/public/img/google-logo-1200x630.jpg">
+			<div class="card-image waves-effect waves-block waves-light" style="height: 150px">
+				<img class="activator" src="/public/img/google-logo-1200x630.jpg" style="max-width: 250px; max-height: 150px; margin: auto;">
 			</div>
 			<div class="card-content">
 				<span class="card-title activator grey-text text-darken-4">Log in with Google account<i class="material-icons right">more_vert</i></span>
@@ -36,6 +36,20 @@
 			<div class="card-reveal">
 				<span class="card-title grey-text text-darken-4">Information<i class="material-icons right">close</i></span>
 				<p>Logging in via your google account (a.k.a OAuth2.0) is very secure and easy.</p>
+			</div>
+		</div>
+		<div class="card" style="width: 25%; margin-left: auto; margin-right: auto; margin-top: 10%;">
+			<div class="card-image waves-effect waves-block waves-light" style="height: 150px">
+				<img class="activator" src="/public/img/tim.gif" style="max-width: 250px; max-height: 150px; margin: auto;">
+			</div>
+			<div class="card-content">
+				<span class="card-title activator grey-text text-darken-4">Log in with TIM account<i class="material-icons right">more_vert</i></span>
+				<p><a href="/timlogin">Click to log in</a></p>
+			</div>
+			<div class="card-reveal">
+				<span class="card-title grey-text text-darken-4">TIM Login<i class="material-icons right">close</i></span>
+				<p>Logging in via your TIM account (a.k.a LDAP) is secure and easy, just make sure you have the correct system access.</p>
+				
 			</div>
 		</div>
 	</div>
