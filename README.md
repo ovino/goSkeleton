@@ -4,8 +4,6 @@ To get going:
 
 1- Clone the project.
 
-2- Update the submodules
-
-    go get -u github.com/astaxie/beego
+2- Check if BeeGo package and tools are installed and GOPATH is updated.
 
 3- 
