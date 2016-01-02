@@ -44,15 +44,32 @@
 			</div>
 			<div class="card-content">
 				<span class="card-title activator grey-text text-darken-4">Log in with TIM account<i class="material-icons right">more_vert</i></span>
-				<p><a href="/timlogin">Click to log in</a></p>
+				<!-- <p><a href="/timlogin">Click to log in</a></p> -->
 			</div>
 			<div class="card-reveal">
 				<span class="card-title grey-text text-darken-4">TIM Login<i class="material-icons right">close</i></span>
-				<p>Logging in via your TIM account (a.k.a LDAP) is secure and easy, just make sure you have the correct system access.</p>
-				
+				<div class="row">
+					<form class="col s12" method="post" action="/timlogin">
+					  <div class="row">
+						<div class="input-field col s6">
+						  <input name="username" placeholder="Username" id="user_name" type="text" class="validate">
+						  <label for="user_name">User Name</label>
+						</div>
+						<div class="input-field col s6">
+						  <input name="password" id="password" type="password" class="validate">
+						  <label for="password">Password</label>
+						</div>
+					  </div>
+						<div class="row">
+						<button class="btn waves-effect waves-light" type="submit" name="login">Login
+							<i class="material-icons right">send</i>
+  						</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-   	<a class="email" style="display: none" href="mailto:{{.Email}}">{{.Email}}</a>
+   	
 </body>
 </html>

@@ -6,7 +6,11 @@ import (
 	// OAuth authentication packages
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/providers/gplus"
+	// Web token packages
 	"github.com/ausrasul/Go-JWT"
+	// TIM packages
+	"github.com/ausrasul/Go-Tim"
+	//Cookie management
 	"github.com/gorilla/sessions"
 	"log"
 )
@@ -41,7 +45,21 @@ func main() {
 	}
 	goJwt.Configure()
 	goJwt.Store = sessions.NewCookieStore([]byte(beego.AppConfig.String("SESSION_SECRET")))
+
+	ldapPort, err := beego.AppConfig.Int("Ldap_port")
+	if err != nil {
+		beego.Critical(err)
+	}
+	tim.Conf = tim.LdapConf{
+		Ldap_server : beego.AppConfig.String("Ldap_server"),
+		Ldap_port : uint16(ldapPort),
+		Base_dn : beego.AppConfig.String("Base_dn"),
+		Ldap_user : beego.AppConfig.String("Ldap_user"),
+		Ldap_pass : beego.AppConfig.String("Ldap_pass"),
+	}
+	
 	beego.SetStaticPath( "/public", "static")
+	
 	
 	beego.Run()
 }

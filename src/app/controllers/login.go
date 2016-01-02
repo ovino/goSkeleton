@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/markbates/goth/gothic"
 	"github.com/ausrasul/Go-JWT"
+	"github.com/ausrasul/Go-Tim"
 	"log"
 )
 
@@ -73,6 +74,50 @@ func (c *SecureContent) Get() {
 }
 
 
+
+func (c *LoginController) TimAuthenticate(){
+	//c.mapUrl()
+	if c.isLoggedIn(){
+		log.Print("Yes a token exist")
+		c.Ctx.Redirect(301, "/secure")
+		return
+	}
+	
+	// Check if the user already have a valid token
+	var j goJwt.GOJWT
+	
+	res := c.Ctx.ResponseWriter
+	req := c.Ctx.Request
+	
+	// print our state string to the console. Ideally, you should verify
+	// that it's the same string as the one you set in `setState`
+	//fmt.Println("key: ", gothic.)
+	var t tim.TIM
+	user, err := t.GetUser(c.Input().Get("username"), c.Input().Get("password"))
+	//	gothic.CompleteUserAuth(res, req)
+	beego.Debug("Tim User: ", user)
+	log.Print("Tim Error: ", err)
+	if err != nil {
+		log.Print("Invalid token")
+		c.Ctx.Redirect(301, "/")
+		return
+	}
+
+	userAttributes := make (map[string]interface{})
+	userAttributes["Name"] = user["cn"]
+	userAttributes["Email"] = user["mail"]
+	//userAttributes["AccessToken"] = user["AccessToken"]
+	
+	token, err := j.CreateToken(userAttributes, &res, req)
+	if err != nil {
+		log.Print(res, err)
+		return
+	}
+	token = token 
+
+	log.Print("Authentication completed")
+	c.Ctx.Redirect(301, "/secure")
+}
 
 func (c *LoginController) Authenticate(){
 	c.mapUrl()
