@@ -12,6 +12,7 @@ import (
 	"github.com/ausrasul/Go-Tim"
 	//Cookie management
 	"github.com/gorilla/sessions"
+	// Redis
 	"log"
 )
 
@@ -59,6 +60,11 @@ func main() {
 	}
 	
 	beego.SetStaticPath( "/public", "static")
+	
+	if err != nil {
+		beego.Critical("Cannot connect to Redis: ", err)
+		return
+	}
 	
 	
 	beego.Run()

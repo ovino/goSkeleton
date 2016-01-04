@@ -6,6 +6,9 @@ import (
 	"github.com/ausrasul/Go-JWT"
 	"github.com/ausrasul/Go-Tim"
 	"log"
+	_ "github.com/astaxie/beego/cache/redis"
+	"github.com/astaxie/beego/cache"
+	
 )
 
 type LoginController struct{
@@ -69,7 +72,11 @@ func (c *SecureContent) Get() {
 	// that it's the same string as the one you set in `setState`
 	//fmt.Println("key: ", gothic.)
 	log.Print("User: ", u)
+	
+	red, err := cache.NewCache("redis", `{"conn":":6379"}`)
+	
 	c.Data["Email"] = u["Name"]
+	c.Data["Name"] = red.Get("astaxie")
 	c.TplNames = "index.tpl"
 }
 
