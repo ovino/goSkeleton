@@ -7,7 +7,7 @@ This project is a jumpstart kit for a Golang web apps.
     ```
     git clone https://github.com/ausrasul/goSkeleton.git
     ```
-- Make a new copy of the start.sh file to my_start.sh with the correct path to the project.
+- Make a new copy of the start.sh file to my_start.sh and update the content with the correct path to the project.
 - Source the new start.sh file to get the env variables for golang and beego.
     ```
     source ./my_start.sh
