@@ -27,7 +27,7 @@ This project is a jumpstart kit for a Golang web apps.
     go get github.com/markbates/goth
     go get golang.org/x/oauth2
     go get github.com/garyburd/redigo/redis
-
+	```
 ### Now run the app:
 ```
 cd goSkeleton/src/app bee run
