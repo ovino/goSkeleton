@@ -10,8 +10,14 @@ This project is a jumpstart kit for a Golang web apps.
 - Make a new copy of the start.sh file to my_start.sh with the correct path to the project.
 - Source the new start.sh file to get the env variables for golang and beego.
     ```
-    source ./my_start.sh 4- Update the config file cd goSkeleton/src/app/conf cp app.conf.sample app.conf
-    ```
+    source ./my_start.sh
+	```
+- Update the config file
+	```
+	cd goSkeleton/src/app/conf
+	cp app.conf.sample app.conf
+	```
+	
 - Install the following packages:
     ```
     go get github.com/astaxie/beego
